@@ -1,8 +1,112 @@
-*{
+/**{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}*/
+/****************************************************************************************************************************/
+/* IMPORTS | GLOBAL */
+/* Montserrat Weights: ExtraLight, Regular, SemiBold*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap');
+
+*{
+    scroll-behavior:smooth;
+    font-family: 'Montserrat', sans-serif;
 }
+
+h2{
+    font-weight:600;
+}
+/****************************************************************************************************************************/
+/* HOME | LOCAL SECTION */
+.card-home{
+    background-color: #898AA6;
+    height: 100vh;
+    text-align: center;
+    min-height: 1000px;
+
+    display: flex;
+    align-items: center;
+    padding:30px 50px;
+    min-width: 300px;
+}
+
+.card-home-content{
+    /*background-color: #898AA6;*/
+    width: 100%;
+}
+
+.btn-go-right{
+    width:100px;
+}
+
+.btn-scroll-down{
+    width:100px;
+}
+/*****************************************************************************************/
+/* HOME | INTRODUCTION SECTION */
+#home-intro{
+    background-color: #C9BBCF;
+}
+
+#header-intro{
+    font-weight: 600;
+}
+
+.font-italics{
+    font-style:italic;
+}
+
+.font-thin{
+    font-weight: 200;
+}
+/*****************************************************************************************/
+/* HOME | WORK SAMPLES SECTION */
+#home-samples{
+    background-color: #B7D3DF;
+    /* Dynamically change the padding for this too*/
+    text-align: left;
+}
+
+.grid-home-showcase{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px 50px;
+    width:100%;
+}
+
+
+/*****************************************************************************************/
+/* HOME | CONTACT SECTION */
+#home-contact{
+    background-color: #D6EFED;
+}
+
+/*****************************************************************************************/
+/****************************************************************************************************************************/
+/* MEDIA | SHORT SECTION */
+@media(max-width: 780px){
+    .card-home{
+        height:auto;
+        padding:30px 35px;
+    }
+    .grid-home-showcase-cover{
+        max-width: 360px;
+        width:100%
+    }
+}
+/*****************************************************************************************/
+/* MEDIA | LONG SECTION */
+@media(min-width: 1750px){
+    .card-home-content{
+        background-color: #898AA6;
+        /*Dynamically changing margin*/
+        margin-left: 90px auto;
+    }
+}
+
+
 /* h1{
     text-align: center;
 }
@@ -10,7 +114,7 @@
 h2{
     text-align: center;
 } */
-
+/*
 body{
     font-family: verdana;
     background-color: white;
@@ -158,6 +262,7 @@ body{
     transform: translate(0px,0px);
     animation-name: slide-in;
 }
+*/
 
 /*.slide-in{
     animation: slide-in 0.5s ease forwards;
