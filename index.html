@@ -4,6 +4,7 @@
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
         <meta http-equiv = "X UA-Compatible" content = "ie=edge">
+        
         <!-- TAB NAME-->
         <title>Homepage | Jessica Wei</title>
 
@@ -14,23 +15,38 @@
     </head>
     <body>
         <div class="card-home" id="home-intro">
-            <div class="card-home-content">
-                <h1 id="header-intro">Hello! I'm <span class ="font-italics">Jessica Wei</span>, a Software Engineer.</h1>
-                <br><br>
-                <div class="card-home-text-group">
-                  <h2><span class="font-thin">Gameplay Engineering</span></h2>
-                  <h2><span class="font-thin">Games for Impact</span></h2>
-                  <h2><span class="font-thin">Tools Development</span></h2>
-                  <h2><span class="font-thin">Performance</span></h2>
+            <div class="card-home-content" id="home-intro-content">
+                <div id="home-intro-content-left">
+                    <h1 class="long-elements font-bold">👋 I'm <span class ="font-italics">Jessica Wei</span>.</h1>
+                    <h1 class="short-elements font-bold">Hi, I'm <span class ="font-italics">Jessica Wei</span>.</h1>
+                    <br>
+                    <h2 class="long-elements" id="header-intro-sub">&emsp;&emsp;&ensp;Software Engineer</h2>
+                    <h2 class="short-elements" id="header-intro-sub">Software Engineer</h2>
+                    <br><br>
+                    <div class="long-elements card-home-text-group">
+                    <h3><span class="font-thin scale-font-size">&emsp;&emsp;&emsp;&ensp;Gameplay Engineering</span></h3>
+                    <h3><span class="font-thin scale-font-size">&emsp;&emsp;&emsp;&ensp;Games for Impact</span></h3>
+                    <h3><span class="font-thin scale-font-size">&emsp;&emsp;&emsp;&ensp;Tools Development</span></h3>
+                    <h3><span class="font-thin scale-font-size">&emsp;&emsp;&emsp;&ensp;Performance</span></h3>
+                    </div>
+                    <div class="short-elements card-home-text-group">
+                        <h3><span class="font-thin scale-font-size">Gameplay Engineering</span></h3>
+                        <h3><span class="font-thin scale-font-size">Games for Impact</span></h3>
+                        <h3><span class="font-thin scale-font-size">Tools Development</span></h3>
+                        <h3><span class="font-thin scale-font-size">Performance</span></h3>
+                    </div>
+                </div>
+                <div id="home-intro-content-right">
+                    <img class="long-elements" src="./media/PLACEHOLDER-GRAPHIC-1.png" alt="Picture of a laptop">
                 </div>
                 <br><br>
-                <button class = "btn-scroll-down">Curious? Scroll on!</button>
+                <!--<button class = "btn-scroll-down">Curious? Scroll on!</button>-->
             </div>
         </div>
 
         <div class="card-home" id="home-samples">
             <div class="card-home-content">
-                <h2>My Work</h2>
+                <h2 class="font-bold">My Work</h2>
                 <br><br>
                 <div class="grid-home-showcase">
                     <img class="grid-home-showcase-cover" src="./media/covers/a-whisper-of-smoke-cover-sq-360.jpg" alt="Whisper of Smoke thumbnail: A winged bunny carrying a scrapbook of memories.">
@@ -46,7 +62,7 @@
 
         <div class="card-home" id="home-contact">
             <div class="card-home-content">
-                <h2>Contact</h2>
+                <h2 class="font-bold">Contact</h2>
                 <br><br>
                 <div class="card-home-text-group">
                   <a href="https://www.linkedin.com/in/jessica-wei-947a5416b">LinkedIn</a>
@@ -54,6 +70,7 @@
             </div>
         </div>
         <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
         <script src = "./js/index.js" charset="utf-8"></script>
     </body>
 </html>
