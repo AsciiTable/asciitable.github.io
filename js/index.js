@@ -1,28 +1,67 @@
+// vars for Homepage scrolling effects
 var cardHomeArray = ["#home-intro", "#home-samples", "#home-contact"]
 var cardHomeCurrentIndex = 0;
 var scrolled = false;
 var allowScrollJS = false;
+var scrollAnimDuration = 400;
 
-// This is the init function for anything you need to set up when the 
+// This is the init function for anything you need to set up when the
 // window first opens
 $(function(){
     toggleHomeWindowScroll();
 })
 
+// Events to handle when the window is resized
 $(window).on("resize", function(){
+    // Checks window size to enable/disable Homepage Scrolling
     toggleHomeWindowScroll();
 });
 
+// Events to handle when the scroll wheel is used
 $(document).on("wheel", function(event){
-    if(!scrolled && allowScrollJS){
-        scrolled = true;
-        homeWindowScroll(1);
-        console.log(event);
-        setTimeout(function () { scrolled = false; }, 100);
+    // If the current page is the Homepage, handle scrolling JS
+    if(this.title === "Homepage | Jessica Wei"){
+      homeScroll(event.originalEvent.wheelDeltaY, true);
     }
 });
 
-function homeWindowScroll(inc){
+$(document).on("keydown", function(event){
+  // If the current page is the Homepage, handle scrolling JS
+  if(this.title === "Homepage | Jessica Wei"){
+    switch(event.key){
+      case "ArrowDown":
+        homeScroll(-1, true);
+        break;
+      case "ArrowUp":
+        homeScroll(1, true);
+        break;
+      case "ArrowLeft":
+        homeScroll(1, false);
+        break;
+      case "ArrowRight":
+        homeScroll(-1, false);
+        break;
+      default:
+        break;
+    }
+  }
+});
+
+function homeScroll(direction){
+  if(!scrolled && allowScrollJS){
+      scrolled = true;
+      if(direction > 0){
+        direction = -1;
+      }else if(direction < 0){
+        direction = 1;
+      }
+      homeWindowScroll(direction);
+      setTimeout(function () { scrolled = false; }, scrollAnimDuration);
+  }
+}
+
+function homeWindowScroll(inc, isVertical){
+    var pCard = $(cardHomeArray[crd]);
     cardHomeCurrentIndex += inc;
     if(cardHomeCurrentIndex >= cardHomeArray.length){
         cardHomeCurrentIndex = 0;
@@ -30,24 +69,35 @@ function homeWindowScroll(inc){
     else if(cardHomeCurrentIndex < 0){
         cardHomeCurrentIndex = cardHomeArray.length - 1;
     }
-
+    // Get the new card (nCard) to show and the card to hide (hCard)
+    var nCard = $(cardHomeArray[crd]);
+    var hCard = nCard;
     for(var crd = 0; crd < cardHomeArray.length; crd++){
         var card = $(cardHomeArray[crd]);
         if(crd === cardHomeCurrentIndex){
-            if(card.hasClass("home-card-hide")){
-                card.removeClass("home-card-hide");
-            }
-            card.addClass("home-card-show");
+            nCard = card;
         }else{
-            if(!card.hasClass("home-card-hide")){
-                card.addClass("home-card-hide");
-            }
             if(card.hasClass("home-card-show")){
-                card.removeClass("home-card-show");
+                hCard = card;
             }
         }
-        console.log(card);
     }
+    // Animate, hide, then show cards
+    if(hCard.hasClass("home-card-show")){
+        hCard.addClass("slide-down-out");
+        setTimeout(function () {
+            if(!hCard.hasClass("home-card-hide")){
+                hCard.addClass("home-card-hide");
+            }
+            hCard.removeClass("slide-down-out");
+            hCard.removeClass("home-card-show");
+
+        }, scrollAnimDuration-50);
+    }
+    if(nCard.hasClass("home-card-hide")){
+        nCard.removeClass("home-card-hide");
+    }
+    nCard.addClass("home-card-show");
 }
 
 function toggleHomeWindowScroll(){
@@ -75,7 +125,8 @@ function resetHomeWindowScroll(){
         if(card.hasClass("home-card-show")){
             card.removeClass("home-card-show");
         }
-        console.log(card);
+        //console.log(card);
     }
 }
 
+// ANIMATIONS
