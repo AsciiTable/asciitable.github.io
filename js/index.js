@@ -5,6 +5,10 @@ var scrolled = false;
 var allowScrollJS = false;
 var scrollAnimDuration = 400;
 
+// vars for screen size behaviors
+// var medScreen = window.matchMedia("(max-width: 1100px)");
+// var largeScreen = window.matchMedia("(min-width: 1750px)");
+
 // This is the init function for anything you need to set up when the
 // window first opens
 $(function(){
@@ -61,7 +65,6 @@ function homeScroll(direction){
 }
 
 function homeWindowScroll(inc, isVertical){
-    var pCard = $(cardHomeArray[crd]);
     cardHomeCurrentIndex += inc;
     if(cardHomeCurrentIndex >= cardHomeArray.length){
         cardHomeCurrentIndex = 0;
@@ -70,7 +73,7 @@ function homeWindowScroll(inc, isVertical){
         cardHomeCurrentIndex = cardHomeArray.length - 1;
     }
     // Get the new card (nCard) to show and the card to hide (hCard)
-    var nCard = $(cardHomeArray[crd]);
+    var nCard = $(cardHomeArray[cardHomeCurrentIndex]);
     var hCard = nCard;
     for(var crd = 0; crd < cardHomeArray.length; crd++){
         var card = $(cardHomeArray[crd]);
@@ -82,27 +85,30 @@ function homeWindowScroll(inc, isVertical){
             }
         }
     }
-    // Animate, hide, then show cards
-    if(hCard.hasClass("home-card-show")){
-        hCard.addClass("slide-down-out");
-        setTimeout(function () {
-            if(!hCard.hasClass("home-card-hide")){
-                hCard.addClass("home-card-hide");
-            }
-            hCard.removeClass("slide-down-out");
-            hCard.removeClass("home-card-show");
+    if(inc > 0){
+        // Animate, hide, then show cards
+        if(hCard.hasClass("home-card-show")){
+            hCard.addClass("slide-down-out");
+            setTimeout(function () {
+                if(!hCard.hasClass("home-card-hide")){
+                    hCard.addClass("home-card-hide");
+                }
+                hCard.removeClass("slide-down-out");
+                hCard.removeClass("home-card-show");
 
-        }, scrollAnimDuration-50);
+            }, scrollAnimDuration-50);
+        }
+        if(nCard.hasClass("home-card-hide")){
+            nCard.removeClass("home-card-hide");
+        }
+        nCard.addClass("home-card-show");
     }
-    if(nCard.hasClass("home-card-hide")){
-        nCard.removeClass("home-card-hide");
-    }
-    nCard.addClass("home-card-show");
 }
 
 function toggleHomeWindowScroll(){
     if(window.innerWidth > 1100){
         if(!allowScrollJS){
+            resetHomeWindowScroll(true);
             cardHomeCurrentIndex=0;
             homeWindowScroll(0);
             allowScrollJS = true;
@@ -110,23 +116,27 @@ function toggleHomeWindowScroll(){
     }
     else{
         if(allowScrollJS){
-            resetHomeWindowScroll();
+            resetHomeWindowScroll(false);
             allowScrollJS = false;
         }
     }
 }
 
-function resetHomeWindowScroll(){
-    for(var crd = 0; crd < cardHomeArray.length; crd++){
-        var card = $(cardHomeArray[crd]);
-        if(card.hasClass("home-card-hide")){
-            card.removeClass("home-card-hide");
+function resetHomeWindowScroll(needsClass){
+    if(needsClass){
+        resetHomeWindowScroll(false);
+        $(cardHomeArray[0]).addClass("home-card-show");
+        $(cardHomeArray[1]).addClass("home-card-hide");
+        $(cardHomeArray[2]).addClass("home-card-hide");
+    }else{
+        for(var crd = 0; crd < cardHomeArray.length; crd++){
+            var card = $(cardHomeArray[crd]);
+            if(card.hasClass("home-card-hide")){
+                card.removeClass("home-card-hide");
+            }
+            if(card.hasClass("home-card-show")){
+                card.removeClass("home-card-show");
+            }
         }
-        if(card.hasClass("home-card-show")){
-            card.removeClass("home-card-show");
-        }
-        //console.log(card);
     }
 }
-
-// ANIMATIONS
