@@ -85,7 +85,7 @@ function homeWindowScroll(inc, isVertical){
             }
         }
     }
-    if(inc > 0){
+    if(inc != 0){
         // Animate, hide, then show cards
         if(hCard.hasClass("home-card-show")){
             hCard.addClass("slide-down-out");
