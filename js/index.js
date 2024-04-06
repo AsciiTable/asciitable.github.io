@@ -88,12 +88,14 @@ function homeWindowScroll(inc, isVertical){
     if(inc != 0){
         // Animate, hide, then show cards
         if(hCard.hasClass("home-card-show")){
-            hCard.addClass("slide-down-out");
+            if(inc < 0){ hCard.addClass("slide-down-out"); }
+            else{ hCard.addClass("slide-up-out"); }
             setTimeout(function () {
                 if(!hCard.hasClass("home-card-hide")){
                     hCard.addClass("home-card-hide");
                 }
-                hCard.removeClass("slide-down-out");
+                if(inc < 0){ hCard.removeClass("slide-down-out"); }
+                else{ hCard.removeClass("slide-up-out"); }
                 hCard.removeClass("home-card-show");
 
             }, scrollAnimDuration-50);
@@ -106,7 +108,7 @@ function homeWindowScroll(inc, isVertical){
 }
 
 function animateHomeCardSlide(direction){
-
+    hCard.addClass("slide-down-out")
 }
 
 function toggleHomeWindowScroll(){
