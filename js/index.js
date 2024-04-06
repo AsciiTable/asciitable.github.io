@@ -2,7 +2,7 @@
 var cardHomeArray = ["#home-intro", "#home-samples", "#home-contact"]
 var cardHomeCurrentIndex = 0;
 var scrolled = false;
-var allowScrollJS = false;
+var allowScrollJS = true;
 var scrollAnimDuration = 400;
 
 // vars for screen size behaviors
@@ -103,6 +103,10 @@ function homeWindowScroll(inc, isVertical){
         }
         nCard.addClass("home-card-show");
     }
+}
+
+function animateHomeCardSlide(direction){
+
 }
 
 function toggleHomeWindowScroll(){
