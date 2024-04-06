@@ -34,6 +34,22 @@
 .font-bold{
     font-weight: 600;
 }
+
+.bottom-center{
+    position: fixed;
+    left: 50%;
+    bottom: 1px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto
+}
+
+.bottom-right{
+    position: fixed;
+    left: 90%;
+    bottom: 1px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto
+}
 /****************************************************************************************************************************/
 /* HOME | LOCAL SECTION */
 .card-home{

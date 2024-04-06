@@ -4,6 +4,8 @@ var cardHomeCurrentIndex = 0;
 var scrolled = false;
 var allowScrollJS = true;
 var scrollAnimDuration = 400;
+var scrollTipShown = false;
+var waitScrollTip = 3000;
 
 // vars for screen size behaviors
 // var medScreen = window.matchMedia("(max-width: 1100px)");
@@ -118,6 +120,9 @@ function toggleHomeWindowScroll(){
             cardHomeCurrentIndex=0;
             homeWindowScroll(0);
             allowScrollJS = true;
+        }
+        if(!scrollTipShown){
+            
         }
     }
     else{
