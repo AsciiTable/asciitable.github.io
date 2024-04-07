@@ -1,11 +1,22 @@
-// vars for Homepage scrolling effects
+// Homepage scrolling effects vars
 var cardHomeArray = ["#home-intro", "#home-samples", "#home-contact"]
 var cardHomeCurrentIndex = 0;
 var scrolled = false;
 var allowScrollJS = true;
 var scrollAnimDuration = 400;
+// Scroll Tooltip vars
 var scrollTipShown = false;
-var waitScrollTip = 3000;
+var scrolledFirst = false;
+var waitScrollTip = 4500;
+var scrollTip = "#scroll-tip"
+var scrollTooltipTimeout = setTimeout(function () {
+    var scrollTipGif = $(scrollTip);
+    scrollTipGif.removeClass("hide");
+    scrollTipGif.removeClass("fade-hide");
+    scrollTipGif.addClass("long-elements");
+    scrollTipGif.addClass("fade-show");
+    scrollTipShown = true;
+}, waitScrollTip);
 
 // vars for screen size behaviors
 // var medScreen = window.matchMedia("(max-width: 1100px)");
@@ -28,6 +39,16 @@ $(document).on("wheel", function(event){
     // If the current page is the Homepage, handle scrolling JS
     if(this.title === "Homepage | Jessica Wei"){
       homeScroll(event.originalEvent.wheelDeltaY, true);
+      if(scrolledFirst){
+          clearTimeout(scrollTooltipTimeout);
+      }
+      if(scrollTipShown){
+          var scrollTipGif = $(scrollTip);
+          scrollTipGif.addClass("hide");
+          scrollTipGif.removeClass("long-elements");
+          scrollTipGif.removeClass("fade-show");
+          scrollTipGif.addClass("fade-hide");
+      }
     }
 });
 
@@ -62,6 +83,11 @@ function homeScroll(direction){
         direction = 1;
       }
       homeWindowScroll(direction);
+      // Prevents the scroll tip from showing up if the user already
+      // scrolled first on their own.
+      if(!scrolledFirst){
+          scrolledFirst = true;
+      }
       setTimeout(function () { scrolled = false; }, scrollAnimDuration);
   }
 }
@@ -120,9 +146,11 @@ function toggleHomeWindowScroll(){
             cardHomeCurrentIndex=0;
             homeWindowScroll(0);
             allowScrollJS = true;
+            scrollTipShown = false;
+            scrolledFirst = false;
         }
         if(!scrollTipShown){
-            
+            setTimeout(scrollTooltipTimeout);
         }
     }
     else{

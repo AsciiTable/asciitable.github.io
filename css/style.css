@@ -6,6 +6,9 @@
 }*/
 /****************************************************************************************************************************/
 /* IMPORTS | GLOBAL */
+/* Color Palette: #898AA6/rgb(137, 138, 166) #C9BBCF/rgb(201, 187, 207)
+                 #B7D3DF/rgb(183, 211, 223) #D6EFED/rgb(214, 239, 237) */
+/* Color Palette Source: https://colorhunt.co/palette/898aa6c9bbcfb7d3dfd6efed*/
 /* Montserrat Weights: ExtraLight, Regular, SemiBold*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap');
 
@@ -35,20 +38,34 @@
     font-weight: 600;
 }
 
+#scroll-tip{
+    width: 100px;
+}
+
+#page-number{
+    font-weight: 300;
+    font-size: 20;
+    text-align: right;
+}
+
 .bottom-center{
     position: fixed;
     left: 50%;
     bottom: 1px;
     transform: translate(-50%, -50%);
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .bottom-right{
     position: fixed;
-    left: 90%;
+    left: 95%;
     bottom: 1px;
     transform: translate(-50%, -50%);
-    margin: 0 auto
+    margin: 0 auto;
+}
+
+.hide{
+    opacity: 0;
 }
 /****************************************************************************************************************************/
 /* HOME | LOCAL SECTION */
@@ -250,7 +267,33 @@
   animation-duration:0.4s;
 }
 
+@keyframes fade-show{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
 
+.fade-show{
+    animation-name: fade-show;
+    animation-duration: 0.3s;
+}
+
+@keyframes fade-hide{
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+.fade-hide{
+    animation-name: fade-hide;
+    animation-duration: 0.3s;
+}
 /* h1{
     text-align: center;
 }
