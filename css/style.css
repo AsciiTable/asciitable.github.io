@@ -43,9 +43,9 @@
 }
 
 #page-number{
-    font-weight: 300;
-    font-size: 20;
     text-align: right;
+    color: #898AA6;
+    font-weight: 500;
 }
 
 .bottom-center{

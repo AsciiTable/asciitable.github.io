@@ -1,20 +1,18 @@
-// Homepage scrolling effects vars
-var cardHomeArray = ["#home-intro", "#home-samples", "#home-contact"]
+/* HOMEPAGE SCROLLING EFFECT VARS */
+var cardHomeArray = ["#home-intro", "#home-samples", "#home-contact"];
 var cardHomeCurrentIndex = 0;
 var scrolled = false;
 var allowScrollJS = true;
 var scrollAnimDuration = 400;
-// Scroll Tooltip vars
+
+/* SCROLL TOOLTIP VARS */
 var scrollTipShown = false;
 var scrolledFirst = false;
 var waitScrollTip = 4500;
-var scrollTip = "#scroll-tip"
+var scrollTip = "#scroll-tip";
+var scrollTipGif = $(scrollTip);
 var scrollTooltipTimeout = setTimeout(function () {
-    var scrollTipGif = $(scrollTip);
-    scrollTipGif.removeClass("hide");
-    scrollTipGif.removeClass("fade-hide");
-    scrollTipGif.addClass("long-elements");
-    scrollTipGif.addClass("fade-show");
+    scrollTipGif.attr("class", "long-elements fade-show");
     scrollTipShown = true;
 }, waitScrollTip);
 
@@ -38,17 +36,22 @@ $(window).on("resize", function(){
 $(document).on("wheel", function(event){
     // If the current page is the Homepage, handle scrolling JS
     if(this.title === "Homepage | Jessica Wei"){
-      homeScroll(event.originalEvent.wheelDeltaY, true);
-      if(scrolledFirst){
-          clearTimeout(scrollTooltipTimeout);
-      }
-      if(scrollTipShown){
-          var scrollTipGif = $(scrollTip);
-          scrollTipGif.addClass("hide");
-          scrollTipGif.removeClass("long-elements");
-          scrollTipGif.removeClass("fade-show");
-          scrollTipGif.addClass("fade-hide");
-      }
+        homeScroll(event.originalEvent.wheelDeltaY, true);
+
+        /* SCROLL TOOLTIP BEHAVIOR */
+        // If the user has scrolled before the tooltip was shown,
+        // then flag that it happened and clear the timeout
+        if(!scrolledFirst && !scrollTipShown){
+            scrolledFirst = true;
+            clearTimeout(scrollTooltipTimeout);
+        }
+        // Otherwise, if the tooltip was shown, then hide the
+        // tooltip and flag it as not showing
+        if(scrollTipShown){
+            scrollTipGif.attr("class", "fade-hide hide");
+            scrollTipShown = false;
+        }
+        /* SCROLL TOOLTIP BEHAVIOR END */
     }
 });
 
@@ -83,11 +86,6 @@ function homeScroll(direction){
         direction = 1;
       }
       homeWindowScroll(direction);
-      // Prevents the scroll tip from showing up if the user already
-      // scrolled first on their own.
-      if(!scrolledFirst){
-          scrolledFirst = true;
-      }
       setTimeout(function () { scrolled = false; }, scrollAnimDuration);
   }
 }
@@ -135,10 +133,6 @@ function homeWindowScroll(inc, isVertical){
     }
 }
 
-function animateHomeCardSlide(direction){
-    hCard.addClass("slide-down-out")
-}
-
 function toggleHomeWindowScroll(){
     if(window.innerWidth > 1100){
         if(!allowScrollJS){
@@ -146,11 +140,6 @@ function toggleHomeWindowScroll(){
             cardHomeCurrentIndex=0;
             homeWindowScroll(0);
             allowScrollJS = true;
-            scrollTipShown = false;
-            scrolledFirst = false;
-        }
-        if(!scrollTipShown){
-            setTimeout(scrollTooltipTimeout);
         }
     }
     else{
@@ -162,11 +151,25 @@ function toggleHomeWindowScroll(){
 }
 
 function resetHomeWindowScroll(needsClass){
+    /* SCROLL TOOLTIP BEHAVIOR */
+    // Reset all scroll tip timers
+    clearTimeout(scrollTooltipTimeout);
+    scrollTipShown = false;
+    scrolledFirst = false;
+    scrollTipGif.attr("class", "hide");
+    /* SCROLL TOOLTIP BEHAVIOR END */
+
     if(needsClass){
         resetHomeWindowScroll(false);
         $(cardHomeArray[0]).addClass("home-card-show");
         $(cardHomeArray[1]).addClass("home-card-hide");
         $(cardHomeArray[2]).addClass("home-card-hide");
+        /* SCROLL TOOLTIP BEHAVIOR */
+        scrollTooltipTimeout = setTimeout(function () {
+            scrollTipGif.attr("class", "long-elements fade-show");
+            scrollTipShown = true;
+        }, waitScrollTip);
+        /* SCROLL TOOLTIP BEHAVIOR END */
     }else{
         for(var crd = 0; crd < cardHomeArray.length; crd++){
             var card = $(cardHomeArray[crd]);
