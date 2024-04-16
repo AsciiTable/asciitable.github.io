@@ -4,6 +4,7 @@ var cardHomeCurrentIndex = 0;
 var scrolled = false;
 var allowScrollJS = true;
 var scrollAnimDuration = 400;
+var pageNumberText = $("#page-number");
 
 /* SCROLL TOOLTIP VARS */
 var scrollTipShown = false;
@@ -23,6 +24,7 @@ var scrollTooltipTimeout = setTimeout(function () {
 // This is the init function for anything you need to set up when the
 // window first opens
 $(function(){
+    pageNumberText.text("Page " + (cardHomeCurrentIndex+1) + "/" + cardHomeArray.length);
     toggleHomeWindowScroll();
 })
 
@@ -101,6 +103,7 @@ function homeWindowScroll(inc, isVertical){
     // Get the new card (nCard) to show and the card to hide (hCard)
     var nCard = $(cardHomeArray[cardHomeCurrentIndex]);
     var hCard = nCard;
+    pageNumberText.text("Page " + (cardHomeCurrentIndex+1) + "/" + cardHomeArray.length);
     for(var crd = 0; crd < cardHomeArray.length; crd++){
         var card = $(cardHomeArray[crd]);
         if(crd === cardHomeCurrentIndex){
