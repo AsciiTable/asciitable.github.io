@@ -143,15 +143,35 @@
     text-align: left;
 }
 
-.grid-home-showcase{
+/*.grid-home-showcase{
+    display: grid;
+    gap: 1000000px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px 50px;
     width:100%;
+}*/
+.grid-home-showcase{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 25px 25px;
+    max-height: 360px;
 }
 
+.grid-home-showcase-cover{
+    max-width: 360px;
+    width:100%;
+    min-height: 180px;
+}
 
+/*.showcase-cover-1{
+    grid-column-start: 2;
+    grid-column-end: five;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+}*/
 
 /*****************************************************************************************/
 /* HOME | CONTACT SECTION */
@@ -180,9 +200,13 @@
     .long-elements{
         display:none;
     }
+    .grid-home-showcase{
+        max-height: none;
+    }
+
     .grid-home-showcase-cover{
         max-width: 360px;
-        width:100%
+        width:100%;
     }
 
     #home-intro-content{
