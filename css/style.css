@@ -48,6 +48,11 @@
     font-weight: 500;
 }
 
+.wip{
+    background-color: #898AA6;
+    text-align: center;
+}
+
 .bottom-center{
     position: fixed;
     left: 50%;
