@@ -79,12 +79,12 @@
     height: 100vh;
     width: 100vw;
     text-align: center;
-    min-height: 1000px;
 
     display: flex;
     align-items: center;
     padding: 30px 50px;
     min-width: 450px;
+    min-height: 675px;
 
     position:absolute;
 }
@@ -187,7 +187,7 @@
 /*****************************************************************************************/
 /****************************************************************************************************************************/
 /* MEDIA | MED SECTION */
-@media(max-width: 1100px){
+@media screen and (max-width: 1100px){
     *{
         overflow: visible;
     }
@@ -220,19 +220,30 @@
 }
 
 /* I WILL come back to this */
-@media(max-width: 450px){
+@media screen and (max-width: 450px){
     *{
         background-color: white;
     }
 }
 /*****************************************************************************************/
 /* MEDIA | LONG SECTION */
-@media(min-width: 1750px){
+/* This was made as a simple (and kind of crude) way to accommodate
+   for the grid showcase being too long for the window. It shrinks
+   the whole thing instead. */
+@media screen and (max-width: 1615px) and (min-width: 1100px) {
+    .grid-home-showcase{
+        gap: 10px 10px;
+    }
+    .grid-home-showcase-cover{
+        width: 240px;
+    }
+}
+
+@media screen and (min-width: 1750px) {
     .card-home-content{
         /*background-color: #898AA6;*/
         /*Dynamically changing margin*/
         margin-left: 90px auto;
-
     }
     .long-elements{
         display:inline-block;
@@ -241,15 +252,7 @@
     .short-elements{
         display:none;
     }
-
-    /*.grid-home-showcase{
-        justify-content: left;
-        flex-wrap: nowrap;
-    }*/
 }
-
-
-/* NOTE: ADD A MIN-HEIGHT SECTION FOR THE LONG SECTION B/C WE DON'T HAVE SCROLL ANYMORE */
 /****************************************************************************************************************************/
 /* ANIMATIONS */
 @keyframes slide-down-out{
