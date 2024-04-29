@@ -1,14 +1,11 @@
-/**{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}*/
 /****************************************************************************************************************************/
 /* IMPORTS | GLOBAL */
 /* Color Palette: #898AA6/rgb(137, 138, 166) #C9BBCF/rgb(201, 187, 207)
                  #B7D3DF/rgb(183, 211, 223) #D6EFED/rgb(214, 239, 237) */
-/* Color Palette Source: https://colorhunt.co/palette/898aa6c9bbcfb7d3dfd6efed*/
+/* Color Palette Source: https://colorhunt.co/palette/898aa6c9bbcfb7d3dfd6efed */
+/* TS4 Color Palette: #4276B7/rgb(66,118,183) #3CAAD6/rgb(60,170,214) #3CB9E1 rgb(60,185,225)
+                    #21B96B/rgb(33,185,107) #A6E329/rgb(166,227,41)
+   TS4 Color Palette: https://www.color-hex.com/color-palette/45450 */
 /* Montserrat Weights: ExtraLight, Regular, SemiBold*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap');
 
@@ -148,15 +145,6 @@
     text-align: left;
 }
 
-/*.grid-home-showcase{
-    display: grid;
-    gap: 1000000px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px 50px;
-    width:100%;
-}*/
 .grid-home-showcase{
     display: flex;
     flex-flow: row wrap;
@@ -170,13 +158,6 @@
     width:100%;
     min-height: 180px;
 }
-
-/*.showcase-cover-1{
-    grid-column-start: 2;
-    grid-column-end: five;
-    grid-row-start: row1-start;
-    grid-row-end: 3;
-}*/
 
 /*****************************************************************************************/
 /* HOME | CONTACT SECTION */
@@ -241,7 +222,6 @@
 
 @media screen and (min-width: 1750px) {
     .card-home-content{
-        /*background-color: #898AA6;*/
         /*Dynamically changing margin*/
         margin-left: 90px auto;
     }
@@ -326,178 +306,3 @@
     animation-name: fade-hide;
     animation-duration: 0.3s;
 }
-/* h1{
-    text-align: center;
-}
-
-h2{
-    text-align: center;
-} */
-/*
-body{
-    font-family: verdana;
-    background-color: white;
-}
-#overlay{
-    position: absolute;
-    top:0;
-    bottom:0;
-    left: 0;
-    right:0;
-    z-index: 11;
-}
-
-
-.normnav{
-    background:rgba(39, 44, 46);
-    padding-top:15px;
-    padding-bottom: 5px;
-
-}
-
-.vidbg{
-    position: relative;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    z-index: 10;
-    background-size: cover;
-}
-
-
-.page{
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 100%;
-    flex-direction: column;
-    position: absolute;
-    background-color: white;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-}
-
-.page1, .page2{
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 100%;
-    flex-direction: column;
-    position: absolute;
-}
-
-.boxbutton{
-    color: white;
-    text-decoration: none;
-    margin-top: 50px;
-    border: 1px solid white;
-    padding: 10px 30px;
-}
-
-.page1{
-    background-color: rgb(129,60,146);
-}
-
-.page2{
-    background-color: rgb(73,60,146);
-}
-
-#fader{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    pointer-events: none;
-    background: white;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-}
-
-#fader:before{
-    content: 'fade';
-}
-
-@keyframes fade-out{
-    from{
-        opacity:1;
-    }
-    to{
-        opacity:0;
-    }
-}
-
-@keyframes fade-in{
-    from{
-        opacity:0;
-    }
-    to{
-        opacity:1;
-    }
-}
-
-#fader.fade-out{
-    opacity: 0;
-    animation-name: fade-out;
-}
-
-#fader.fade-in{
-    opacity:1;
-    animation-name: fade-in;
-}
-
-@keyframes slide-out{
-    from{
-        transform: translate(0px);
-    }
-    to{
-        transform: translate(0px, 100px);
-    }
-}
-
-@keyframes slide-in{
-    from{
-        transform: translate(0px, 100px);
-    }
-    to{
-        transform: translate(0px,0px);
-    }
-}
-
-.page.slide-out{
-    transform: translate(0px, -100px);
-    animation-name: slide-out;
-}
-
-.page.slide-in{
-    transform: translate(0px,0px);
-    animation-name: slide-in;
-}
-*/
-
-/*.slide-in{
-    animation: slide-in 0.5s ease forwards;
-    animation-name: slide-in;
-    animation-duration: 0.5s;
-
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes slide-in{
-    from{
-        transform: translateX(100%);
-        visibility: visible;
-    }
-    to{
-        transform: translateX(0%);
-    }
-}*/
