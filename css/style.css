@@ -202,9 +202,9 @@
 
 /* I WILL come back to this */
 @media screen and (max-width: 450px){
-    *{
+    /**{
         background-color: white;
-    }
+    }*/
 }
 /*****************************************************************************************/
 /* MEDIA | LONG SECTION */
